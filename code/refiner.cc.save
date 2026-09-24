@@ -1,0 +1,81 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <sstream>
+#include <vector>
+#include <unordered_set>
+
+struct NameDate{
+	std::string name;
+	std::string date;
+}
+
+struct Data{
+	int id;
+	std::string name;
+	std::string date;
+	std::vector<float> values;
+};
+
+void filterByDate(std::vector<Data>& allData, const std::string& date1, const std::string& date2){
+	std::string start = date1.substr(6,4) + date1.substr(3,2) + date1.substr(0,2);
+	std::string end = date2.substr(6,4) + date2.substr(3,2) + date2.substr(0,2);
+	std::vector<Data> filteredData;
+	for(const auto& item : allData){
+		std::string currDate = item.date.substr(6,4) + item.date.substr(3,2) + item.date.substr(0,2);
+		if( currDate >= start && currDate <= end )
+			filteredData.push_back(item);	
+	}
+	allData = std::move(filteredData);
+}
+
+int main(int argc, char** argv){
+	if(argc < 2)return 1;
+	std::ofstream result("OutputData.csv");
+	result << "id;name;date;value1;value2;value3;value4;value5;value6;value7\n";
+	std::vector<Data> allData;	
+	for(int i=1; i<argc; ++i){
+		std::ifstream file(argv[i]);
+		if(!file.is_open()) return 1;	
+		std::string line;
+		std::getline(file,line);
+		while(std::getline(file,line)){
+			std::stringstream ss(line);
+			Data row;	
+        
+		        std::string s_id, s_value;
+	
+	        	std::getline(ss, s_id, ';');
+		        std::getline(ss, row.name, ';');
+		        std::getline(ss, row.date, ';');
+
+	        	row.id = std::stoi(s_id);
+	
+		        for (int i = 0; i < 7; ++i) {
+		            if (std::getline(ss, s_value, ';'))
+	        	        row.values.push_back(std::stof(s_value));
+		        }
+		        allData.push_back(row);	
+		}
+	}
+	filterByDate(allData, "01.09.2026", "31.12.2026");
+	
+	for (const auto& item : allData) {
+        	result << item.id << ';' << item.name << ';' << item.date << ';';
+	        for (size_t j = 0; j < item.values.size(); ++j) {
+        		result << item.values[j];
+        		if (j < item.values.size() - 1) result << ';';
+        	}
+     
+		result << '\n';
+		
+    	}
+
+	std::unordererd_set<NameDate> holder;
+	for(const auto& data: allData){
+		
+		if(holder.count(
+	}
+
+	return 0;
+}

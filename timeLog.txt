@@ -1,0 +1,26 @@
+
+Mon Sep 21 20:35:11 2026: refining for 30401 ms
+
+Mon Sep 21 20:36:36 2026: refining for 29859 ms
+
+Mon Sep 21 20:58:40 2026: refining for 30764 ms
+
+Mon Sep 21 21:01:16 2026: refining for 5363 ms
+
+Mon Sep 21 21:07:29 2026: refining for 9641 ms
+
+Mon Sep 21 21:09:19 2026: refining for 15323 ms
+
+Mon Sep 21 21:09:38 2026: refining for 14938 ms
+
+Mon Sep 21 21:11:36 2026: refining for 10709 ms
+
+Mon Sep 21 21:11:48 2026: refining for 9883 ms
+
+Mon Sep 21 21:12:04 2026: refining for 11215 ms
+
+Mon Sep 21 21:31:36 2026: refining for 10224 ms
+
+Mon Sep 21 21:43:16 2026: merging for: 10878 ms; filtered for 11464 ms; sorted for 11618 ms
+
+Mon Sep 21 21:44:56 2026: merging for: 8630 ms; filtered for 589 ms; sorted for 170 ms
